@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
 import NewsScreen from "./screens/NewsScreen";
 import LearnScreen from "./screens/LearnScreen";
+import VaccineScreen from "./screens/VaccineScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +21,8 @@ export default function App() {
               iconName = focused ? "book" : "book";
             } else if (route.name === "News") {
               iconName = focused ? "newspaper-o" : "newspaper-o";
+            } else if (route.name === "Vaccines") {
+              iconName = focused ? "shield" : "shield";
             }
 
             // You can return any component that you like here!
@@ -33,6 +36,7 @@ export default function App() {
       >
         <Tab.Screen name="Learn" component={LearnScreen} />
         <Tab.Screen name="News" component={NewsScreen} />
+        <Tab.Screen name="Vaccines" component={VaccineScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
