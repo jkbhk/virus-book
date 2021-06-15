@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function LearnScreen() {
+function LearnScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Many knowledge! Much wow!</Text>
+      <Text>Papaya sucks</Text>
       <Image
         style={{ width: 100, height: 100, borderRadius: 30 }}
         source={{
@@ -12,5 +13,17 @@ export default function LearnScreen() {
         }}
       />
     </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+export default function LearnStack() {
+  return (
+    <Stack.Navigator
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+    >
+      <Stack.Screen name="Learn" component={LearnScreen} />
+    </Stack.Navigator>
   );
 }
