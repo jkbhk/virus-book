@@ -1,70 +1,23 @@
-/*
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import NewsScreen from './screens/NewsScreen'
+import LearnScreen from './screens/LearnScreen'
+
+
+
+
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Learning about covid!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Learn" component={LearnScreen} />
+        <Tab.Screen name="News" component={NewsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-*/
-
-import React from 'react';
-import { FlatList } from 'react-native';
-
-// Import getNews from news.js
-import { getNews } from './src/news';
-import Article from './src/components/Article';
-
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { articles: [], refreshing: true };
-    this.fetchNews = this.fetchNews.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchNews();
-  }
-
-  fetchNews() {
-    getNews()
-      .then(articles => this.setState({ articles, refreshing: false }))
-      .catch(() => this.setState({ refreshing: false }));
-  }
-
-  handleRefresh() {
-    this.setState(
-      {
-        refreshing: true
-      },
-      () => this.fetchNews()
-    );
-  }
-
-  render() {
-    return (
-      <FlatList
-        data={this.state.articles}
-        renderItem={({ item }) => <Article article={item} />}
-        keyExtractor={item => item.url}
-        refreshing={this.state.refreshing}
-        onRefresh={this.handleRefresh.bind(this)}
-      />
-    );
-  }
 }
