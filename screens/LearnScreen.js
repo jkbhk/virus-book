@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, Button, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { BottomTabBar } from "@react-navigation/bottom-tabs";
 
 const Stack = createStackNavigator();
 
@@ -8,15 +9,7 @@ export default function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Learn" component={LearnScreen} />
-      <Stack.Screen
-        name="Hand Washing Techniques"
-        component={HandWashingScreen}
-      />
-      <Stack.Screen
-        name="Mask Wearing Methodology"
-        component={MaskWearingScreen}
-      />
-      <Stack.Screen name="More Details" component={DetailsScreen} />
+      <Stack.Screen name="Calming Tones" component={MusicScreen} />
     </Stack.Navigator>
   );
 }
@@ -27,14 +20,15 @@ function LearnScreen({ navigation }) {
       style={{
         flex: 1,
         alignItems: "Top Left",
-        justifyContent: "Top",
+        justifyContent: "center",
         textAlign: "center",
-        padding: 25,
+        padding: 10,
+        marginBottom: 200,
       }}
     >
       <TouchableOpacity
         style={{ color: "lightblue", padding: 25 }}
-        onPress={() => navigation.navigate("Hand Washing Techniques")}
+        onPress={() => navigation.navigate("Calming Tones")}
       >
         <Text
           style={{
@@ -43,99 +37,24 @@ function LearnScreen({ navigation }) {
             backgroundColor: "lightblue",
           }}
         >
-          Proper Hand Washing
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{ color: "lightblue", padding: 25 }}
-        onPress={() => navigation.navigate("Mask Wearing Methodology")}
-      >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 40,
-            backgroundColor: "lightblue",
-          }}
-        >
-          Proper Mask Wearing
+          Self Care
         </Text>
       </TouchableOpacity>
     </View>
   );
 }
 
-function HandWashingScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Image
-        style={{
-          width: 500,
-          height: 500,
-          borderRadius: 0,
-          resizeMode: "contain",
-        }}
-        source={{
-          uri: "https://www.healthhub.sg/sites/assets/Assets/Article%20Images/washing_hands_photos.jpg",
-        }}
-      />
-
-      <TouchableOpacity
-        style={{ color: "lightblue" }}
-        onPress={() => navigation.navigate("More Details")}
-      >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            backgroundColor: "lightblue",
-            alignItems: "bottomleft",
-          }}
-        >
-          For More Details Click Here
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function MaskWearingScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Image
-        style={{
-          width: 500,
-          height: 500,
-          borderRadius: 0,
-          resizeMode: "contain",
-        }}
-        source={{
-          uri: "https://www.who.int/images/default-source/health-topics/coronavirus/masks-infographic---final-(web---rgb).png?sfvrsn=c67232f0_19",
-        }}
-      />
-      <TouchableOpacity
-        style={{ color: "lightblue" }}
-        onPress={() => navigation.navigate("More Details")}
-      >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-            backgroundColor: "lightblue",
-            alignItems: "bottomleft",
-          }}
-        >
-          For More Details Click Here
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-function DetailsScreen({ navigation }) {
+function MusicScreen({ navigation }) {
   return (
     <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      style={{
+        flex: 1,
+        alignItems: "Top Left",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: 10,
+        marginBottom: 200,
+      }}
     ></View>
   );
 }
